@@ -13,7 +13,8 @@ public class DeveloperEntity {
     private String roleTitle;
     private String stack;
     private boolean isWorking;
-    private String companyName;
+    @ManyToOne @JoinColumn(name = "company_id") // fk
+    private CompanyEntity companyName;
     private int yearsExperience;
     private String githubProfileLink;
     private String linkedInProfileLink;
@@ -21,7 +22,7 @@ public class DeveloperEntity {
     public DeveloperEntity() {
     }
 
-    public DeveloperEntity(UUID developerId, String name, String roleTitle, String stack, boolean isWorking, String companyName, int yearsExperience, String githubProfileLink, String linkedInProfileLink) {
+    public DeveloperEntity(UUID developerId, String name, String roleTitle, String stack, boolean isWorking, CompanyEntity companyName, int yearsExperience, String githubProfileLink, String linkedInProfileLink) {
         this.developerId = developerId;
         this.name = name;
         this.roleTitle = roleTitle;
@@ -73,11 +74,11 @@ public class DeveloperEntity {
         isWorking = working;
     }
 
-    public String getCompanyName() {
+    public CompanyEntity getCompanyName() {
         return companyName;
     }
 
-    public void setCompanyName(String companyName) {
+    public void setCompanyName(CompanyEntity companyName) {
         this.companyName = companyName;
     }
 
