@@ -2,7 +2,6 @@ package dev.dxmingues.RegisterDevs.entity;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 @Entity
@@ -11,6 +10,7 @@ public class DeveloperEntity {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID developerId;
     private String name;
+    private String roleTitle;
     private String stack;
     private boolean isWorking;
     private String companyName;
@@ -21,8 +21,10 @@ public class DeveloperEntity {
     public DeveloperEntity() {
     }
 
-    public DeveloperEntity(String name, String stack, boolean isWorking, String companyName, int yearsExperience, String githubProfileLink, String linkedInProfileLink) {
+    public DeveloperEntity(UUID developerId, String name, String roleTitle, String stack, boolean isWorking, String companyName, int yearsExperience, String githubProfileLink, String linkedInProfileLink) {
+        this.developerId = developerId;
         this.name = name;
+        this.roleTitle = roleTitle;
         this.stack = stack;
         this.isWorking = isWorking;
         this.companyName = companyName;
@@ -45,6 +47,14 @@ public class DeveloperEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRoleTitle() {
+        return roleTitle;
+    }
+
+    public void setRoleTitle(String roleTitle) {
+        this.roleTitle = roleTitle;
     }
 
     public String getStack() {
